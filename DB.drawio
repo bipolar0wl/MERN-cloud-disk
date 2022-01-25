@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2022-01-25T13:50:35.012Z" agent="5.0 (Windows)" etag="57fqeW2-ETd1kpmQ7Zuk" version="16.4.5" type="github">
+<mxfile host="app.diagrams.net" modified="2022-01-25T13:50:52.778Z" agent="5.0 (Windows)" etag="VN9zdvcEZtlb34qFpM1D" version="16.4.5" type="github">
   <diagram id="wqr8FO6SboXYAq6EjiK0" name="Страница 1">
     <mxGraphModel dx="1422" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="nUE5G2zjk7tjGjsvS8Rd-1" value="User" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
-          <mxGeometry x="40" y="100" width="280" height="180" as="geometry" />
+          <mxGeometry x="40" y="220" width="280" height="180" as="geometry" />
         </mxCell>
         <mxCell id="nUE5G2zjk7tjGjsvS8Rd-2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" parent="nUE5G2zjk7tjGjsvS8Rd-1" vertex="1">
           <mxGeometry y="30" width="280" height="30" as="geometry" />
