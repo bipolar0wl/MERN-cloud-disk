@@ -1,4 +1,6 @@
 {
   "serverPort": 5000,
-  "dbUrl": "mongodb+srv://root:Hill@cluster0.27w4z.mongodb.net/cluster0?retryWrites=true&w=majority"
+  "dbUrl": "mongodb+srv://root:Hill@cluster0.27w4z.mongodb.net/cluster0?retryWrites=true&w=majority",
+  "secretKey": "Never_gonna_give_you_up",
+  "filePath": "A:\\OpenServer5.4.0\\domains\\MERN-cloud-disk\\server\\files"
 }
