@@ -76,7 +76,7 @@ const Disk = () => {
           />
         </div>
       </div>
-      {/* <FileList /> */}
+      <FileList />
       <Popup />
     </div>
   ) : (

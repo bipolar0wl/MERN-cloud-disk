@@ -1,5 +1,5 @@
 import axios from "axios";
-import { addFile, setFiles } from "../reducers/fileReducer";
+import { addFile, deleteFileAction, setFiles } from "../reducers/fileReducer";
 
 export const getFiles = (dirId: string) => {
   return async (dispatch: any) => {
@@ -67,6 +67,42 @@ export const uploadFile = (file: string, dirId: string) => {
       dispatch(addFile(responce.data));
     } catch (error: any) {
       console.log(error.response.data.message);
+    }
+  };
+};
+
+export const downloadFile = async (file: any) => {
+  const response = await fetch(
+    `http://localhost:5000/api/files/download?id=${file._id}`,
+    {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    }
+  );
+  if (response.status === 200) {
+    const blob = await response.blob(); //
+    const downloadUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = file.name;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+};
+
+export const deleteFile = async (file: any) => {
+  return async (dispatch: any) => {
+    try {
+      const responce = await axios.delete(
+        `http://localhost:5000/api/files?id=${file._id}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
+      dispatch(deleteFileAction(file._id));
+      alert(responce.data.message);
+    } catch (error: any) {
+      alert(error?.response?.data?.message);
     }
   };
 };

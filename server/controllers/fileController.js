@@ -55,7 +55,7 @@ class FileCrontroller {
       }
 
       user.usedSpace = user.usedSpace + file.size;
-      
+
       let path;
       if (parent) {
         path = `${config.get("filePath")}\\${user.id}\\${parent.path}\\${
@@ -71,11 +71,15 @@ class FileCrontroller {
       file.mv(path); // Перемещение файла
 
       const type = file.name.split(".").pop();
+      let filePath = file.name;
+      if (parent) {
+        filePath = `${parent.path}\\${file.name}`;
+      }
       const dbFile = new File({
         name: file.name,
         type,
         size: file.size,
-        path: parent?.path,
+        path: filePath,
         parent: parent?._id,
         user: user?._id,
       });
@@ -87,6 +91,37 @@ class FileCrontroller {
     } catch (error) {
       console.log(error);
       return res.status(500).json({ message: "Upload error" });
+    }
+  }
+
+  async downloadFile(req, res) {
+    try {
+      const file = await File.findOne({ _id: req.query.id, user: req.user.id });
+      const path = `${config.get("filePath")}\\${req.user.id}\\${file.path}\\${
+        file.name
+      }`;
+      if (fs.existsSync(path)) {
+        return res.download(path, file.name);
+      }
+      return res.status(400).json({ message: "Download error" });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Download error" });
+    }
+  }
+
+  async deleteFile(req, res) {
+    try {
+      const file = await File.findOne({ _id: req.query.id, user: req.user.id });
+      if (!file) {
+        return res.status(400).json({ message: "File not found" });
+      }
+      fileService.deleteFile(file);
+      await file.remove();
+      return res.json({ message: "File was deleted" });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Dir is not empty" });
     }
   }
 }
